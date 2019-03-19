@@ -6,6 +6,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'dracula/vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'dylanaraps/wal'
 "End plugins
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -17,7 +18,6 @@ nnoremap O O<ESC>
 nnoremap <NL> i<CR><ESC>
 
 "General
-set cursorline
 set number
 set relativenumber
 set tabstop=2
@@ -28,7 +28,7 @@ set hlsearch
 syntax enable
 
 "Theme
-colo dracula
+colorscheme wal
 
 "Supertab
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
