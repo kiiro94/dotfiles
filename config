@@ -304,11 +304,11 @@ set_from_resource $fg i3wm.color2 #f0f0f0
 
 # Theme colors
 # class                 border  bground text    indicator child_border
-client.focused          $bg     $bg     $fg     $bg       $bg
-client.focused_inactive $fg     $fg     $bg     $fg       $fg
-client.unfocused        $fg     $fg     $bg     $fg       $fg
-client.urgent           $bg     $bg     $fg     $bg       $bg
-client.placeholder      $fg     $fg     $bg     $fg       $fg
+client.focused          $fg     $fg     $bg     $bg       $bg
+client.focused_inactive $bg     $bg     $fg     $fg       $fg
+client.unfocused        $bg     $bg     $fg     $fg       $fg
+client.urgent           $fg     $fg     $bg     $bg       $bg
+client.placeholder      $bg     $bg     $fg     $fg       $fg
 
 client.background       $fg
 
