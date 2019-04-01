@@ -7,6 +7,7 @@ Plugin 'ayu-theme/ayu-vim'
 Plugin 'dracula/vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'dylanaraps/wal'
+Plugin 'Valloric/YouCompleteMe'
 "End plugins
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,7 +32,7 @@ syntax enable
 colorscheme wal
 
 "Supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 "Tabs shortcuts
 nnoremap th  :tabfirst<CR>
