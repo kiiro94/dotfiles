@@ -30,15 +30,12 @@ font pango: misc tamsynmod bold 10
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec terminal
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
-bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun
+bindsym $mod+d exec --no-startup-id rofi -font "Iosevka Medium 14" -modi drun -show drun
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -246,7 +243,8 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# Hotkey for arandr
+# urxvt
+bindsym $mod+Return exec --no-startup-id urxvt -fn "xft:Iosevka Semibold:pixelsize=14:antialias=true" 
 
 bindsym $mod+F8 exec --no-startup-id arandr
 # Autostart applications
