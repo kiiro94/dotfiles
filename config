@@ -9,7 +9,7 @@ set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 # new_window pixel 2
-new_window none
+new_window pixel 4
 new_float normal
 
 # Hide borders
@@ -54,6 +54,11 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
+
+# Media keys
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -243,26 +248,26 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# urxvt
+# Urxvt
 bindsym $mod+Return exec --no-startup-id urxvt -fn "xft:Iosevka Semibold:pixelsize=14:antialias=true" 
 
+# Arandr
 bindsym $mod+F8 exec --no-startup-id arandr
+
 # Autostart applications
 exec --no-startup-id wal -R 
 exec_always --no-startup-id xinput --set-prop "DELL0817:00 044E:121F Touchpad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id polybar main_bar
+exec_always --no-startup-id polybar main_bar
 exec --no-startup-id compton --respect-prop-shadow -b
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-# exec --no-startup-id blueman-applet
+# exec --no-startup-id pamac-tray
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -297,16 +302,17 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-set_from_resource $bg i3wm.color7 #f0f0f0
-set_from_resource $fg i3wm.color2 #f0f0f0
+set_from_resource $bg i3wm.color1 #f0f0f0
+set_from_resource $fg i3wm.color5 #f0f0f0
+set_from_resource $bg2 i3wm.color0 #f0f0f0
 
 # Theme colors
 # class                 border  bground text    indicator child_border
-client.focused          $fg     $fg     $bg     $bg       $bg
-client.focused_inactive $bg     $bg     $fg     $fg       $fg
-client.unfocused        $bg     $bg     $fg     $fg       $fg
-client.urgent           $fg     $fg     $bg     $bg       $bg
-client.placeholder      $bg     $bg     $fg     $fg       $fg
+client.focused          $fg     $fg     $bg     $fg       $fg
+client.focused_inactive $bg     $bg2     $fg     $bg       $bg
+client.unfocused        $bg     $bg2     $fg     $bg       $bg
+client.urgent           $fg     $fg     $bg     $fg       $fg
+client.placeholder      $bg     $bg     $fg     $bg       $bg
 
 client.background       $fg
 
@@ -316,7 +322,7 @@ client.background       $fg
 
 # Set inner/outer gaps
 gaps inner 10
-gaps outer 30
+gaps outer 10
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>

@@ -17,6 +17,9 @@ nnoremap o o<ESC>
 nnoremap O O<ESC>
 nnoremap <NL> i<CR><ESC>
 
+"Build python with F9
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+
 "General
 set number
 set relativenumber
