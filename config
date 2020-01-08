@@ -9,23 +9,27 @@ set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 # new_window pixel 2
-new_window pixel 4
-new_float normal
+#new_window pixel 4
+#new_float normal
+default_border pixel 1
+default_floating_border pixel 1
 
 # Hide borders
 # hide_edge_borders none
 
 # change borders
 bindsym $mod+u border none
-bindsym $mod+y border pixel 1
+bindsym $mod+y border pixel 0
 bindsym $mod+n border normal
+
+# border_radius 10
 
 # Floating by default
 # for_window [class="[.]*"] floating enable
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Iosevka Semibold 10
+font pango: Futura Md BT 9
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -35,7 +39,7 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
-bindsym $mod+d exec --no-startup-id rofi -font "Iosevka Medium 14" -modi drun -show drun
+bindsym $mod+d exec --no-startup-id rofi -font "Futura Md BT 12" -modi drun -show drun
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -75,6 +79,10 @@ bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+# Blueshift
+bindsym $mod+Shift+n exec blueshift -r
+bindsym $mod+Ctrl+n exec blueshift -t 3500
 
 focus_follows_mouse no
 
@@ -249,16 +257,19 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Urxvt
-bindsym $mod+Return exec --no-startup-id urxvt -fn "xft:Iosevka Semibold:pixelsize=14:antialias=true" 
+# bindsym $mod+Return exec --no-startup-id urxvt -fn "xft:Iosevka Semibold:pixelsize=14:antialias=true" 
+bindsym $mod+Return exec --no-startup-id urxvt 
 
 # Arandr
 bindsym $mod+F8 exec --no-startup-id arandr
+bindsym $mod+F6 exec --no-startup-id xinput --set-prop 12 "Device Enabled" 0
+bindsym $mod+F7 exec --no-startup-id xinput --set-prop 12 "Device Enabled" 1
 
 # Autostart applications
 exec --no-startup-id wal -R 
 exec_always --no-startup-id xinput --set-prop "DELL0817:00 044E:121F Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always --no-startup-id polybar main_bar
-exec --no-startup-id compton --respect-prop-shadow -b
+exec_always --no-startup-id xinput --set-prop 11 "libinput Accel Speed" -0.5
+exec --no-startup-id compton --respect-prop-shadow --backend glx --vsync opengl-swc
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
@@ -270,6 +281,7 @@ exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id start_conky_green
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id sleep 1 && polybar main_bar
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -308,13 +320,12 @@ set_from_resource $bg2 i3wm.color0 #f0f0f0
 
 # Theme colors
 # class                 border  bground text    indicator child_border
-client.focused          $fg     $fg     $bg     $fg       $fg
-client.focused_inactive $bg     $bg2     $fg     $bg       $bg
-client.unfocused        $bg     $bg2     $fg     $bg       $bg
-client.urgent           $fg     $fg     $bg     $fg       $fg
-client.placeholder      $bg     $bg     $fg     $bg       $bg
-
-client.background       $fg
+client.focused          $term_foreground     $term_foreground     $term_background     $term_foreground       $term_foreground
+client.focused_inactive $term_foreground     $term_foreground    $term_background     $term_foreground       $term_foreground 
+client.unfocused        $term_foreground    $term_foreground    $term_background     $term_foreground       $term_foreground
+client.urgent           $term_foreground     $term_foreground     $term_background     $term_foreground       $term_foreground
+client.placeholder      $term_foreground     $term_foreground     $term_background     $term_foreground       $term_foreground
+client.background       $term_foreground
 
 #############################
 ### settings for i3-gaps: ###

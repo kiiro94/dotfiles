@@ -7,6 +7,9 @@ Plugin 'ayu-theme/ayu-vim'
 Plugin 'dracula/vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'dylanaraps/wal'
+Plugin 'justinj/vim-pico8-syntax'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 "End plugins
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -22,7 +25,6 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
 "General
 set number
-set relativenumber
 set tabstop=2
 set shiftwidth=2
 set expandtab
