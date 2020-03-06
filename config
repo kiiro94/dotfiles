@@ -56,13 +56,13 @@ bindsym $mod+Ctrl+m exec pavucontrol
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 
 # Media keys
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym Mod1+Down exec playerctl play-pause
+bindsym Mod1+Right exec playerctl next
+bindsym Mod1+Left exec playerctl previous
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -320,11 +320,11 @@ set_from_resource $bg2 i3wm.color0 #f0f0f0
 
 # Theme colors
 # class                 border  bground text    indicator child_border
-client.focused          $term_foreground     $term_foreground     $term_background     $term_foreground       $term_foreground
-client.focused_inactive $term_foreground     $term_foreground    $term_background     $term_foreground       $term_foreground 
-client.unfocused        $term_foreground    $term_foreground    $term_background     $term_foreground       $term_foreground
-client.urgent           $term_foreground     $term_foreground     $term_background     $term_foreground       $term_foreground
-client.placeholder      $term_foreground     $term_foreground     $term_background     $term_foreground       $term_foreground
+client.focused          $term_foreground     $term_background     $term_foreground     $term_foreground       $term_foreground
+client.focused_inactive $term_foreground     $term_background    $term_foreground     $term_foreground       $term_foreground 
+client.unfocused        $term_foreground    $term_background    $term_foreground     $term_foreground       $term_foreground
+client.urgent           $term_foreground     $term_background     $term_foreground     $term_foreground       $term_foreground
+client.placeholder      $term_foreground     $term_background     $term_foreground     $term_foreground       $term_foreground
 client.background       $term_foreground
 
 #############################
@@ -341,11 +341,11 @@ gaps outer 10
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
+smart_borders on
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
