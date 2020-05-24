@@ -27,7 +27,7 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 set mouse=a
 set ttymouse=xterm2
 set number
-set relativenumber
+"set relativenumber
 set tabstop=2
 set shiftwidth=2
 set expandtab
